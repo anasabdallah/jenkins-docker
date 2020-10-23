@@ -22,4 +22,9 @@ RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s 
 RUN wget https://get.helm.sh/helm-v2.14.3-linux-amd64.tar.gz && \
     tar -zxvf helm-v2.14.3-linux-amd64.tar.gz && \
     mv linux-amd64/helm /usr/local/bin/helm
-USER jenkins
+# aws cli
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
+    unzip awscliv2.zip && \
+    ./aws/install
+# less
+RUN apt update && apt install less
